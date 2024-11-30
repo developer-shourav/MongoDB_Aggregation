@@ -1,5 +1,3 @@
-
-
 ## MongoDB Aggregation and Indexing
 
 ### `$match` , `$project` aggregation stage
@@ -18,7 +16,7 @@ Example:
 db.test.aggregate([])
 ```
 
-#### 39. `$match`
+#### 1. `$match`
 Using `$match` stage we can set condition, and conditionally find document that we need for aggregation. 
 
 Example:
@@ -30,7 +28,7 @@ db.test.aggregate([
 ])
 ```
 
-#### 40. `$project`
+#### 2. `$project`
 Using `$project` stage we can set the properties of the document we want to see in output. 
 
 Example:
@@ -52,7 +50,7 @@ db.test.aggregate([
 
 ### `$addFields` , `$out` , `$merge` aggregation stage
 
-#### 41. `$addFields`
+#### 3. `$addFields`
 Using `$addFields` we can add field into aggregation but it doesn't add field to the main collection. 
 
 Example: 
@@ -70,7 +68,7 @@ db.test.aggregate([
     ])
 ```
 
-#### 42. `$out`
+#### 4. `$out`
 Using `$out` query `stage` we can create a new collection with the aggregation data. 
 
 > Syntax: `{$out: "output-collection-Name"}`
@@ -93,7 +91,7 @@ db.test.aggregate([
     ])
 ```
 
-#### 43. `$merge`
+#### 5. `$merge`
 `$merge` stage will marge aggregation output the existing actual collection
 
 > Syntax: ` {$merge: "existing collection name"}`
@@ -118,7 +116,7 @@ db.test.aggregate([
 
 ### `$group` , `$sum` , `$push` aggregation stage
 
-#### 44. `$group`
+#### 6. `$group`
 Using `$group` operator in this staging we can create document group based on specific Data of the collection document.
 In this `$group` we can  find counts, totals, averages or maximums of document group. 
 
@@ -145,7 +143,7 @@ db.test.aggregate([
 ])
 ```
 
-#### 45. `$sum`
+#### 7. `$sum`
 Using `$sum` we can see total document count of the `$group`
 
 Example:
@@ -156,7 +154,7 @@ db.test.aggregate([
 ])
 ```
 
-#### 46. `$push`
+#### 8. `$push`
 In `$group` stage we can add properties into the group using `$push` operator. Using `$push` we can 
 add data as a array property. 
 
@@ -210,7 +208,7 @@ db.test.aggregate([
 ```
 ### explore more about `$group` & `$project`
 
-#### 47. `$group` operation `$sum`, `$max` , `$min` , `avg`
+#### 9. `$group` operation `$sum`, `$max` , `$min` , `avg`
 
 `$sum` use for see total value
 `$max` use for find largest value
@@ -234,7 +232,7 @@ db.test.aggregate([
 ])
 
 ```
-#### 48. `$project`
+#### 10. `$project`
 Besides field filtering we can do more with `$project` stage
 
 Example:
@@ -271,7 +269,7 @@ db.test.aggregate([
 
 ### Explore `$group` with `$unwind` aggregation stage
 
-#### 49. `$unwind`
+#### 11. `$unwind`
 
 `$unwind` is a array method. Using `$unwind` we can break array and create multiple document with the array property. 
 It helps to crate `group` with the array element. 
@@ -289,7 +287,7 @@ db.test.aggregate([
 
 ```
 
-#### 50. `$group` more
+#### 12. `$group` more
 `$group` with array properties
 
 Example:
@@ -306,7 +304,7 @@ db.test.aggregate([
 ```
 ### `$bucket`, `$sort`, and `$limit` aggregation stage
 
-#### 51. `$bucket`
+#### 13. `$bucket`
 Using `$bucket` we create a boundary where we can do special `group` operations. 
 
 > `$bucket` syntax 
@@ -347,7 +345,7 @@ db.test.aggregate([
 
 ```
 
-#### 52. `$sort`
+#### 14. `$sort`
 Using `$sort` stage in aggregation we can sort document in `Ascending` or `Descending` order. 
 
 Example of `Ascending sort`:
@@ -402,7 +400,7 @@ db.test.aggregate([
 ])
 ```
 
-#### 53. `$limit`
+#### 15. `$limit`
 The `$limit` stage in aggregation use for define maximum output documents. 
 
 Example: 
@@ -436,7 +434,7 @@ db.test.aggregate([
 
 ### `$facet`, multiple pipeline aggregation stage
 
-#### 54. `$facet`
+#### 16. `$facet`
 Using `$facet` we can do multiple pipeline in a aggregation
 
 Example:
@@ -483,16 +481,16 @@ Example:
 
 ### `$lookup` stage, `embedding` vs `referencing`
 
-#### 55. `embedding`
+#### 17. `embedding`
 `Embedding` In this approach, related data is stored together in a single document. Like user product purchase info stored
  into the `user` document. 
 
 
-#### 56. `referencing`
+#### 18. `referencing`
 `Referencing` Referenced documents store relationships by including a reference (usually an ObjectId) to another document stored in a different collection. Like user product purchase info stored into another `purchase` collection using reference of `User Id`.
 
 
-#### 57. `$lookup`
+#### 19. `$lookup`
 `$lookup` stage use for getting reference data form related document. 
 
 Syntax:
@@ -526,7 +524,7 @@ db.orders.aggregate([
 
 ### What is `indexing`, `COLLSCAN` vs `IXSCAN`
 
-#### 58. `indexing`
+#### 20. `indexing`
 Document দ্রুত খুঁজে বের করার জন্য document এর কোন property উপর ভিত্তি করে index করে বা সাজিয়ে রাখাকে indexing বলে। 
 আমারা Explicitly indexing না করেলেও Implicitly  `_id` উপর index হয়েই থাকে। 
 
@@ -544,16 +542,16 @@ Example of how to see search time:
 db.test.find({_id : ObjectId("6406ad63fc13ae5a40000065")}).explain("executionStats")
 ```
 
-#### 59. `COLLSCAN`
+#### 21. `COLLSCAN`
 When without any indexing we search a data it reads total document then it called `COLLSCAN`. It takes more time. 
 
-#### 60. `IXSCAN`
+#### 22. `IXSCAN`
 When we search data using index property's value it called `IXSCAN`
 
 
 ### Explore `compound index` and `text index`
 
-#### 61. `compound index`
+#### 23. `compound index`
 We also create index using multiple properties, it called compound index. 
 
 Example:
@@ -563,7 +561,7 @@ db.bigData.createIndex({gender:1 , age: 1})
 
 ```
 
-#### 62.`text index`
+#### 24.`text index`
 We can crate text index based on a `text property`
 
 Example: based on `about` field create `text` index
